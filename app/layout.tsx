@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
+import "@stream-io/video-react-sdk/dist/css/styles.css";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
