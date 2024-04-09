@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import useMeetingTypeList from "@/hooks/useMeetingTypeList";
 
 interface MeetingModelProps {
   isOpen: boolean;
