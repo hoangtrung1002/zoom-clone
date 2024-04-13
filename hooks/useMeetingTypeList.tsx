@@ -4,6 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+
 const useMeetingTypeList = () => {
   const router = useRouter();
   const { user } = useUser();
@@ -13,7 +14,7 @@ const useMeetingTypeList = () => {
     description: "",
     link: "",
   });
-  const [calDetails, setCalDetails] = useState<Call>();
+  const [callDetails, setCallDetails] = useState<Call>();
   const { toast } = useToast();
 
   const createMeeting = async () => {
@@ -35,7 +36,7 @@ const useMeetingTypeList = () => {
         data: { starts_at: startAt, custom: { description } },
       });
 
-      setCalDetails(call);
+      setCallDetails(call);
 
       if (!values.description) {
         router.push(`/meeting/${call.id}`);
@@ -52,6 +53,10 @@ const useMeetingTypeList = () => {
   };
   return {
     createMeeting,
+    callDetails,
+    toast,
+    values,
+    setValues,
   };
 };
 
