@@ -83,6 +83,7 @@ const CallList = ({ type }: CallListProps) => {
             title={
               formatString((meeting as Call).state?.custom.description) ||
               formatString((meeting as CallRecording).filename) ||
+              "Personal Meeting" ||
               "No description"
             }
             icon={
