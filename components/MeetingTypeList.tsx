@@ -6,6 +6,7 @@ import MeetingModel from "./MeetingModel";
 import useMeetingTypeList from "@/hooks/useMeetingTypeList";
 import { Textarea } from "./ui/textarea";
 import ReactDatePicker from "react-datepicker";
+import { Input } from "./ui/input";
 
 const MeetingTypeList = () => {
   const router = useRouter();
@@ -108,6 +109,22 @@ const MeetingTypeList = () => {
         handleClick={createMeeting}
         buttonText="Start Meeting"
       />
+      <MeetingModel
+        isOpen={meetingState === "isJoiningMeeting"}
+        onClose={() => setMeetingState(undefined)}
+        title="Type the link here"
+        className="text-center"
+        handleClick={() => router.push(values.link)}
+        buttonText="Join Meeting"
+      >
+        <Input
+          placeholder="Meeting Link"
+          className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+          onChange={(e) => {
+            setValues({ ...values, link: e.target.value });
+          }}
+        />
+      </MeetingModel>
     </section>
   );
 };
